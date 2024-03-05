@@ -20,14 +20,14 @@ def login(request):
             username=nome,
             password=senha
         )
-        if usuario is not None: 
+        if usuario is not None:
             auth.login(request, usuario)
-            messages.success(request, f"{nome} logado sucesso!")
-            return redirect('index')            
+            messages.success(request, f'{nome} logado com sucesso!')
+            return redirect('index')
         else:
-            messages.error(request, "Não deu boa!")
+            messages.error(request, 'Erro ao efetuar login')
             return redirect('login')
-
+    
     return render(request,"usuarios/login.html", {"form": form})
 
 def cadastro(request):
