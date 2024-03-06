@@ -11,7 +11,6 @@ def login(request):
         form = LoginForms(request.POST)
 
         if form.is_valid():
-
             nome=form['nome_login'].value()
             senha=form['senha'].value()
 
@@ -28,7 +27,7 @@ def login(request):
             messages.error(request, 'Erro ao efetuar login')
             return redirect('login')
     
-    return render(request,"usuarios/login.html", {"form": form})
+    return render(request,"usuarios/login.html", {'form': form})
 
 def cadastro(request):
     form = CadastroForms()
@@ -37,9 +36,6 @@ def cadastro(request):
         form = CadastroForms(request.POST)
 
         if form.is_valid():
-            if form["senha_1"].value() != form ["senha_2"].value():
-                messages.error(request, "Errou a senha cabeça!")
-                return redirect('cadastro')
 
             nome=form["nome_cadastro"].value()
             email=form["email"].value()
